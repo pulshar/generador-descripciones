@@ -1,0 +1,5 @@
+{
+  "name": "GenDescribe - Generador de Descripciones",
+  "description": "Una aplicación minimalista para generar descripciones de productos multilingües utilizando IA, inspirada en diseño moderno.",
+  "requestFramePermissions": []
+}
