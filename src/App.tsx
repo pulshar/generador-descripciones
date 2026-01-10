@@ -131,12 +131,12 @@ const App: React.FC = () => {
                       state.selectedLanguages.length === 0
                     }
                     className={`
-                                    group w-full py-4 cursor-pointer rounded-md font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-sm
+                                    w-full py-4 rounded-md font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-sm
                                     ${
                                       !state.image ||
                                       state.selectedLanguages.length === 0
                                         ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                        : "bg-[#0A221C] text-white hover:bg-[#1a3a32] hover:shadow-lg active:scale-[0.99]"
+                                        : "group cursor-pointer bg-[#0A221C] text-white hover:bg-[#1a3a32] hover:shadow-lg active:scale-[0.99]"
                                     }
                                 `}
                   >

@@ -36,7 +36,7 @@ export const LengthSelector: React.FC<LengthSelectorProps> = ({ selected, onChan
                 ${
                   isSelected
                     ? "border-gray-400 bg-gray-100 text-gray-600"
-                    : "bg-white border-gray-200 text-gray-600 hover:border-gray-400"
+                    : "cursor-pointer bg-white border-gray-200 text-gray-600 hover:border-gray-400"
                 }
               `}
             >
