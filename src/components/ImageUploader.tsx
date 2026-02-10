@@ -1,5 +1,5 @@
 import React, { useRef, useState, useCallback } from 'react';
-import { UploadCloud, Image as ImageIcon, X, Loader2, AlertCircle } from 'lucide-react';
+import { UploadCloud, Image as ImageIcon, Loader2, AlertCircle } from 'lucide-react';
 import { DEFAULT_IMAGE_URL } from '../constants';
 
 interface ImageUploaderProps {
@@ -16,7 +16,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
 
   const processFile = (file: File) => {
     setError(null);
-    
+
     // Validación de tipo de archivo
     if (!file.type.startsWith('image/')) {
       setError("El archivo debe ser una imagen (JPG, PNG, WebP).");
@@ -70,49 +70,49 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
     setLoadingDefault(true);
     setError(null);
     try {
-        const response = await fetch(DEFAULT_IMAGE_URL, { mode: 'cors' });
-        
-        if (!response.ok) {
-            throw new Error(`Failed to fetch image: ${response.statusText}`);
-        }
+      const response = await fetch(DEFAULT_IMAGE_URL, { mode: 'cors' });
 
-        const blob = await response.blob();
-        const reader = new FileReader();
-        reader.onloadend = () => {
-            if (reader.result) {
-                onImageChange(reader.result as string);
-            }
-            setLoadingDefault(false);
-        };
-        reader.readAsDataURL(blob);
-    } catch (e) {
-        console.error("Failed to load default image", e);
-        setError("No se pudo cargar la imagen de muestra.");
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${response.statusText}`);
+      }
+
+      const blob = await response.blob();
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        if (reader.result) {
+          onImageChange(reader.result as string);
+        }
         setLoadingDefault(false);
+      };
+      reader.readAsDataURL(blob);
+    } catch (e) {
+      console.error("Failed to load default image", e);
+      setError("No se pudo cargar la imagen de muestra.");
+      setLoadingDefault(false);
     }
   };
 
   if (isProcessing || loadingDefault) {
-     return (
-        <div className="w-full h-80 rounded-xl border border-gray-100 bg-gray-50 flex flex-col items-center justify-center gap-4 animate-pulse">
-            <Loader2 size={40} className="animate-spin text-[#0A221C]" />
-            <p className="text-lg font-medium text-gray-600">
-                {loadingDefault ? "Cargando muestra..." : "Subiendo imagen..."}
-            </p>
-        </div>
-     );
+    return (
+      <div className="w-full h-80 rounded-xl border border-gray-100 bg-gray-50 flex flex-col items-center justify-center gap-4 animate-pulse">
+        <Loader2 size={40} className="animate-spin text-primary" />
+        <p className="text-lg font-medium text-gray-600">
+          {loadingDefault ? "Cargando muestra..." : "Subiendo imagen..."}
+        </p>
+      </div>
+    );
   }
 
   if (image) {
     return (
       <div className="relative group w-full h-80 rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white">
-        <img src={image} alt="Product" className="w-full h-full object-cover" />
+        <img src={image} alt="Product" className="w-full h-full object-cover animate-scale-in origin-center" />
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
-          <button 
+          <button
             onClick={() => onImageChange(null)}
-            className="cursor-pointer bg-white/80 text-red-600 px-6 py-3 rounded-md font-medium flex items-center gap-2 hover:bg-white transition-all shadow-lg text-base"
+            className="cursor-pointer bg-white/80 text-primary px-6 py-3 rounded-md font-medium flex items-center gap-2 hover:bg-white transition-all shadow-lg text-base"
           >
-            <X size={20} /> Cambiar Imagen
+            <ImageIcon size={16} /> Cambiar Imagen
           </button>
         </div>
       </div>
@@ -126,12 +126,11 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
       onDragLeave={handleDragLeave}
       className={`
         relative w-full h-80 rounded-xl border-2 border-dashed transition-all duration-300 flex flex-col items-center justify-center p-8 text-center 
-        ${
-          isDragging
-            ? "border-[#D1F083] bg-[#faffeb] scale-[1.01]"
-            : error
+        ${isDragging
+          ? "border-accent bg-accent-soft scale-[1.01]"
+          : error
             ? "border-red-200 bg-red-50/30"
-            : "border-gray-200 bg-white hover:border-[#D1F083]/50 hover:bg-gray-50"
+            : "border-gray-200 bg-white hover:border-accent/50 hover:bg-gray-50"
         }
       `}
     >
@@ -159,19 +158,19 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
           <div
             className={`
                 w-16 h-16 rounded-2xl flex items-center justify-center transition-colors mb-2
-                ${isDragging ? "bg-[#D1F083]" : "bg-gray-100"}
+                ${isDragging ? "bg-accent" : "bg-gray-100"}
             `}
           >
             <UploadCloud
               size={32}
-              className={isDragging ? "text-[#0A221C]" : "text-gray-400"}
+              className={isDragging ? "text-primary" : "text-gray-400"}
             />
           </div>
 
-          <h2 className="font-semibold text-[#0A221C] text-xl">
+          <h2 className="font-bold text-primary text-xl">
             Sube tu producto
           </h2>
-          <p className="text-gray-500 text-base">
+          <p className="text-gray-500 text-sm">
             Arrastra o haz clic para explorar
           </p>
         </>
@@ -181,7 +180,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
         <div className="flex flex-col items-center mt-4 w-full max-w-xs px-4">
           <button
             onClick={() => fileInputRef.current?.click()}
-            className="cursor-pointer w-full px-6 py-3 bg-[#0A221C] text-white rounded-md text-sm font-semibold transition-all shadow-sm duration-200 hover:hover:bg-[#1a3a32] hover:ring-3 hover:ring-[#D1F083]"
+            className="cursor-pointer w-full px-6 py-3 bg-primary text-white rounded-md text-sm font-semibold transition-all shadow-sm duration-200 hover:bg-primary/90 hover:ring-3 hover:ring-accent"
           >
             Seleccionar imagen
           </button>
@@ -196,7 +195,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
 
           <button
             onClick={loadDefaultImage}
-            className="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-500 hover:text-[#0A221C] hover:bg-white rounded-lg flex items-center justify-center gap-2 transition-colors border border-transparent hover:border-gray-200"
+            className="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-500 hover:text-primary hover:bg-white rounded-lg flex items-center justify-center gap-2 transition-colors border border-transparent hover:border-gray-200"
           >
             <ImageIcon size={16} /> Usar imagen de muestra
           </button>

@@ -1,1 +1,72 @@
 @import "tailwindcss";
+
+@theme {
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-display: "Plus Jakarta Sans", sans-serif;
+
+    --color-primary: #0A221C;
+    --color-accent: #D1F083;
+    --color-accent-soft: #faffeb;
+    --color-background: #FAFAF9;
+    --color-surface: #ffffff;
+
+    --animate-scale-in: scale-in 0.3s ease-out;
+
+    @keyframes scale-in {
+        0% {
+            opacity: 0;
+            transform: scale(1.1);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+@layer base {
+
+    body,
+    button,
+    input,
+    textarea,
+    select {
+        @apply font-sans;
+    }
+
+    body {
+        @apply bg-[#FAFAF9];
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    label {
+        @apply font-display text-[#0A221C];
+        letter-spacing: -0.015em;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #faffeb;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #0A221C;
+        border-radius: 5px;
+        border: 2px solid #faffeb;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #1a3a32;
+    }
+}

@@ -1,4 +1,4 @@
-import { ArrowRight, Bot, Check, Copy, Leaf, Loader2, Sparkles } from "lucide-react";
+import { Bot, Check, Copy, Leaf, Loader2, Sparkles } from "lucide-react";
 import React, { useState } from "react";
 import { ImageUploader } from "./components/ImageUploader";
 import { LanguageSelector } from "./components/LanguageSelector";
@@ -67,12 +67,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen p-4 md:p-8 bg-[#FAFAF9] text-[#0A221C] font-sans">
+    <div className="min-h-screen p-4 md:p-8 bg-background text-primary font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Header Branding */}
         <div className="flex items-center gap-3 mb-8 px-2">
-          <div className="p-2.5 bg-[#D1F083] rounded-lg shadow-sm">
-            <Leaf size={24} className="text-[#0A221C]" />
+          <div className="p-2.5 bg-accent rounded-lg shadow-sm">
+            <Leaf size={24} className="text-primary" />
           </div>
           <div>
             <h1 className="text-2xl font-bold tracking-tight">GenDescribe</h1>
@@ -112,7 +112,7 @@ const App: React.FC = () => {
                       }))
                     }
                   />
-                  <div className="h-px bg-gray-200 w-full my-6"></div>
+                  <div className="h-px bg-white w-full my-4"></div>
                   <LengthSelector
                     selected={state.selectedLength}
                     onChange={(len) =>
@@ -132,12 +132,11 @@ const App: React.FC = () => {
                     }
                     className={`
                                     w-full py-4 rounded-md font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-sm
-                                    ${
-                                      !state.image ||
-                                      state.selectedLanguages.length === 0
-                                        ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                                        : "group cursor-pointer bg-[#0A221C] text-white hover:bg-[#1a3a32] hover:shadow-lg active:scale-[0.99]"
-                                    }
+                                    ${!state.image ||
+                        state.selectedLanguages.length === 0
+                        ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                        : "group cursor-pointer bg-primary text-white hover:bg-primary/90 hover:shadow-lg active:scale-[0.99]"
+                      }
                                 `}
                   >
                     {state.isGenerating ? (
@@ -147,12 +146,9 @@ const App: React.FC = () => {
                       </>
                     ) : (
                       <>
-                        <Sparkles size={20} className="text-[#D1F083]" />
+                        <Sparkles size={20} className="text-accent" />
                         Generar descripciones
-                        <ArrowRight
-                          className="transition-transform duration-200 group-hover:translate-x-1"
-                          size={20}
-                        />
+
                       </>
                     )}
                   </button>
@@ -172,7 +168,7 @@ const App: React.FC = () => {
               {/* Header Resultados */}
               <div className="flex items-center justify-between mb-6 z-10">
                 {state.results && (
-                  <span className="text-xs font-medium px-3 py-1 bg-[#faffeb] text-[#0A221C] border border-[#D1F083] rounded-full">
+                  <span className="text-xs font-medium px-3 py-1 bg-accent-soft text-primary border border-accent rounded-full">
                     {state.results.length === 1
                       ? "1 generado"
                       : `${state.results.length} generados`}
@@ -209,10 +205,10 @@ const App: React.FC = () => {
                     {state.results.map((result, idx) => (
                       <div
                         key={idx}
-                        className="bg-[#FAFAF9] rounded-xl p-6 border border-gray-100 hover:border-gray-200 transition-colors group relative"
+                        className="bg-background rounded-xl p-6 border border-gray-100 hover:border-gray-200 transition-colors group relative"
                       >
                         <div className="flex justify-between items-start mb-3">
-                          <span className="text-xs font-bold tracking-wider text-[#0A221C] uppercase bg-[#D1F083] px-2 py-1 rounded">
+                          <span className="text-xs font-bold tracking-wider text-primary uppercase bg-accent px-2 py-1 rounded">
                             {result.language}
                           </span>
                           <button
@@ -222,11 +218,11 @@ const App: React.FC = () => {
                                 idx
                               )
                             }
-                            className="p-2 rounded-lg bg-white hover:bg-[#0A221C] hover:text-white transition-all text-gray-400 shadow-sm border border-gray-100"
+                            className="p-2 rounded-lg bg-white hover:bg-primary hover:text-white transition-all text-gray-400 shadow-sm border border-gray-100"
                             title="Copiar texto"
                           >
                             {copiedIndex === idx ? (
-                              <Check size={16} className="text-[#D1F083]" />
+                              <Check size={16} className="text-accent" />
                             ) : (
                               <Copy size={16} />
                             )}
@@ -235,7 +231,7 @@ const App: React.FC = () => {
                         <h3 className="text-lg font-bold mb-3 text-gray-900 leading-tight">
                           {result.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                        <p className="text-gray-600 tracking-[-0.015em] leading-relaxed text-sm md:text-base">
                           {result.description}
                         </p>
                       </div>

@@ -23,7 +23,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ selected, on
     <>
       <div>
         <div className="flex justify-between items-baseline">
-          <label className="text-[#0A221C] font-semibold text-xl">
+          <label className="text-primary font-bold text-xl">
             Idiomas
           </label>
           <span className="text-xs text-gray-400">
@@ -46,28 +46,25 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ selected, on
               disabled={isDisabled}
               className={`
                 relative flex items-center justify-start px-3 py-2 rounded-md border border-gray-200 transition-all duration-200 ease-in-out
-                ${
-                  isSelected
-                    ? "bg-[#D1F083] border-[#D1F083] transform scale-[1.02]"
-                    : "bg-white border-gray-100 hover:border-[#D1F083] hover:bg-[#faffeb]"
+                ${isSelected
+                  ? "bg-accent border-accent transform scale-[1.02]"
+                  : "bg-white border-gray-100 hover:border-accent hover:bg-accent-soft"
                 }
-                ${
-                  isDisabled
-                    ? "opacity-50 cursor-not-allowed hover:border-gray-100 hover:bg-white"
-                    : "cursor-pointer"
+                ${isDisabled
+                  ? "opacity-50 cursor-not-allowed hover:border-gray-100 hover:bg-white"
+                  : "cursor-pointer"
                 }
               `}
             >
               <span
-                className={`font-semibold ${
-                  isSelected ? "text-[#0A221C]" : "text-gray-600"
-                }`}
+                className={`font-medium text-sm ${isSelected ? "text-primary" : "text-gray-500"
+                  }`}
               >
                 {lang.label}
               </span>
               {isSelected && (
                 <div className="absolute top-2 right-2">
-                  <Check size={13} className="text-[#0A221C]" strokeWidth={3} />
+                  <Check size={13} className="text-primary" strokeWidth={3} />
                 </div>
               )}
             </button>

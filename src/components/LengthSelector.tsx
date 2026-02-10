@@ -19,11 +19,11 @@ export const LengthSelector: React.FC<LengthSelectorProps> = ({ selected, onChan
 
   return (
     <div>
-      <label className="text-[#0A221C] font-semibold text-xl">Longitud</label>
+      <label className="text-primary font-bold text-xl">Longitud</label>
       <p className="text-sm text-gray-500 mb-4">
         Selecciona el nivel de detalle deseado.
       </p>
-      
+
       <div className="flex flex-col gap-3">
         {LENGTH_OPTIONS.map((opt) => {
           const isSelected = selected === opt.id;
@@ -33,37 +33,33 @@ export const LengthSelector: React.FC<LengthSelectorProps> = ({ selected, onChan
               onClick={() => onChange(opt.id)}
               className={`
                 relative flex items-center p-4 rounded-md border transition-all duration-300
-                ${
-                  isSelected
-                    ? "border-gray-400 bg-gray-100 text-gray-600"
-                    : "cursor-pointer bg-white border-gray-200 text-gray-600 hover:border-gray-400"
+                ${isSelected
+                  ? "border-gray-400 bg-gray-100 text-gray-600"
+                  : "cursor-pointer bg-white border-gray-200 text-gray-600 hover:border-gray-400"
                 }
               `}
             >
               <div
                 className={`
                 p-2 rounded-full mr-4 transition-colors
-                ${
-                  isSelected
-                    ? "bg-[#D1F083] text-[#0A221C]"
+                ${isSelected
+                    ? "bg-accent text-primary"
                     : "bg-gray-100 text-gray-500"
-                }
+                  }
               `}
               >
                 {getIcon(opt.id)}
               </div>
               <div className="text-left">
                 <div
-                  className={`font-semibold ${
-                    isSelected ? "text-gray-900" : "text-gray-900"
-                  }`}
+                  className={`font-medium text-sm ${isSelected ? "text-primary" : "text-gray-500"
+                    }`}
                 >
                   {opt.label}
                 </div>
                 <div
-                  className={`text-sm ${
-                    isSelected ? "text-gray-400" : "text-gray-400"
-                  }`}
+                  className={`text-xs ${isSelected ? "text-gray-500" : "text-gray-400"
+                    }`}
                 >
                   {opt.desc}
                 </div>
@@ -71,7 +67,7 @@ export const LengthSelector: React.FC<LengthSelectorProps> = ({ selected, onChan
 
               {isSelected && (
                 <div className="absolute top-3 right-3">
-                  <Check size={16} className="text-[#0A221C]" strokeWidth={3} />
+                  <Check size={16} className="text-primary" strokeWidth={3} />
                 </div>
               )}
             </button>
