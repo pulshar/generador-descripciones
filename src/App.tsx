@@ -135,7 +135,7 @@ const App: React.FC = () => {
                                     ${!state.image ||
                         state.selectedLanguages.length === 0
                         ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                        : "group cursor-pointer bg-primary text-white hover:bg-primary/90 hover:shadow-lg active:scale-[0.99]"
+                        : "group cursor-pointer bg-primary text-white hover:bg-primary/90 hover:ring-3 hover:ring-accent active:scale-[0.99]"
                       }
                                 `}
                   >

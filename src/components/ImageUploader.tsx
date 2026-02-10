@@ -110,7 +110,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
           <button
             onClick={() => onImageChange(null)}
-            className="cursor-pointer bg-white/80 text-primary px-6 py-3 rounded-md font-medium flex items-center gap-2 hover:bg-white transition-all shadow-lg text-base"
+            className="cursor-pointer bg-white/80 text-primary px-6 py-3 rounded-md font-medium flex items-center gap-2 hover:bg-white transition-all shadow-lg text-sm"
           >
             <ImageIcon size={16} /> Cambiar Imagen
           </button>
