@@ -1,5 +1,5 @@
 import { Bot, Check, Copy, Leaf, Loader2, Sparkles } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { ImageUploader } from "./components/ImageUploader";
 import { LanguageSelector } from "./components/LanguageSelector";
 import { LengthSelector } from "./components/LengthSelector";
@@ -33,6 +33,13 @@ const App: React.FC = () => {
   });
 
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (state.isGenerating && window.innerWidth < 1024 && resultsRef.current) {
+      resultsRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [state.isGenerating]);
 
   const handleGenerate = async () => {
     if (!state.image) return;
@@ -162,7 +169,10 @@ const App: React.FC = () => {
           </div>
 
           {/* CAJA DERECHA: RESULTADOS */}
-          <div className="flex flex-col h-full min-h-125 lg:min-h-0">
+          <div
+            ref={resultsRef}
+            className="flex flex-col h-full min-h-125 lg:min-h-0"
+          >
             <div className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-gray-200/60 h-full flex flex-col relative overflow-hidden">
               {/* Header Resultados */}
               <div className="flex items-center justify-between mb-6 z-10">
