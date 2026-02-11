@@ -26,7 +26,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ selected, on
           <label className="text-primary font-bold text-xl">
             Idiomas
           </label>
-          <span className="text-xs text-gray-400">
+          <span className="hidden md:block text-xs text-gray-400">
             {selected.length}/3 seleccionados
           </span>
         </div>

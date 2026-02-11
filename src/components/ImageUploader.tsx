@@ -94,7 +94,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
 
   if (isProcessing || loadingDefault) {
     return (
-      <div className="w-full h-80 rounded-xl border border-gray-100 bg-gray-50 flex flex-col items-center justify-center gap-4 animate-pulse">
+      <div className="w-full h-80 md:h-85 rounded-xl border border-gray-100 bg-gray-50 flex flex-col items-center justify-center gap-4 animate-pulse">
         <Loader2 size={40} className="animate-spin text-primary" />
         <p className="text-lg font-medium text-gray-600">
           {loadingDefault ? "Cargando muestra..." : "Subiendo imagen..."}
@@ -105,7 +105,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
 
   if (image) {
     return (
-      <div className="relative group w-full h-80 rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white">
+      <div className="relative group w-full h-80 md:h-85 rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-white">
         <img src={image} alt="Product" className="w-full h-full object-cover animate-scale-in origin-center" />
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
           <button
@@ -125,7 +125,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       className={`
-        relative w-full h-80 rounded-xl border-2 border-dashed transition-all duration-300 flex flex-col items-center justify-center p-8 text-center 
+        relative w-full h-80 md:h-85 rounded-xl border-2 border-dashed transition-all duration-300 flex flex-col items-center justify-center p-3 md:p-8 text-center 
         ${isDragging
           ? "border-accent bg-accent-soft scale-[1.01]"
           : error
@@ -195,7 +195,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
 
           <button
             onClick={loadDefaultImage}
-            className="cursor-pointer w-full px-4 py-2 text-sm font-medium text-gray-500 hover:text-primary hover:bg-white rounded-lg flex items-center justify-center gap-2 transition-colors border border-transparent hover:border-gray-200"
+            className="cursor-pointer w-full py-2 text-sm font-medium text-gray-500 hover:text-primary hover:bg-white rounded-lg flex items-center justify-center gap-2 transition-colors border border-transparent hover:border-gray-200"
           >
             <ImageIcon size={16} /> Usar imagen de muestra
           </button>
