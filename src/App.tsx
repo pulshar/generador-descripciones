@@ -247,9 +247,12 @@ const App: React.FC = () => {
                       <p className="text-lg font-display font-medium text-gray-500 mb-2">
                         Esperando contenido
                       </p>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-sm text-gray-400 hidden lg:block">
                         Sube una imagen y configura tus opciones en el panel de
                         la izquierda para ver aquí las descripciones generadas.
+                      </p>
+                      <p className="text-sm text-gray-400 lg:hidden">
+                        Sube una imagen y configura tus opciones para ver aquí las descripciones generadas.
                       </p>
                     </div>
                   </div>
