@@ -19,7 +19,7 @@ export const LengthSelector: React.FC<LengthSelectorProps> = ({ selected, onChan
 
   return (
     <div>
-      <label className="text-primary font-bold text-xl">Longitud</label>
+      <label className="text-primary font-semibold text-xl">Longitud</label>
       <p className="text-sm text-gray-500 mb-4">
         Selecciona el nivel de detalle deseado.
       </p>

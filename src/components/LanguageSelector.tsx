@@ -23,7 +23,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({ selected, on
     <>
       <div>
         <div className="flex justify-between items-baseline">
-          <label className="text-primary font-bold text-xl">
+          <label className="text-primary font-semibold text-xl">
             Idiomas
           </label>
           <span className="hidden md:block text-xs text-gray-400">

@@ -131,7 +131,7 @@ const App: React.FC = () => {
                       state.selectedLanguages.length === 0
                     }
                     className={`
-                                    w-full py-4 rounded-md font-bold text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-sm
+                                    w-full py-4 rounded-md font-medium text-lg flex items-center justify-center gap-3 transition-all duration-300 shadow-sm
                                     ${!state.image ||
                         state.selectedLanguages.length === 0
                         ? "bg-gray-100 text-gray-400 cursor-not-allowed"
@@ -244,7 +244,7 @@ const App: React.FC = () => {
                       <Sparkles size={40} className="text-gray-300" />
                     </div>
                     <div className="text-center max-w-sm">
-                      <p className="text-lg font-medium text-gray-500 mb-2">
+                      <p className="text-lg font-display font-medium text-gray-500 mb-2">
                         Esperando contenido
                       </p>
                       <p className="text-sm text-gray-400">

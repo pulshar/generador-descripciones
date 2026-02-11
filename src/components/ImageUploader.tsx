@@ -167,7 +167,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, onImageChan
             />
           </div>
 
-          <h2 className="font-bold text-primary text-xl">
+          <h2 className="font-semibold text-primary text-xl">
             Sube tu producto
           </h2>
           <p className="text-gray-500 text-sm">
