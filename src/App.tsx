@@ -70,7 +70,7 @@ const App: React.FC = () => {
     <div className="min-h-screen p-4 md:p-8 bg-background text-primary font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Header Branding */}
-        <div className="flex items-center gap-3 mb-8 px-2">
+        <div className="flex items-center gap-3 mb-4 sm:mb-8 px-2">
           <div className="p-2.5 bg-accent rounded-lg shadow-sm">
             <Leaf size={24} className="text-primary" />
           </div>
@@ -81,7 +81,6 @@ const App: React.FC = () => {
             </p>
           </div>
         </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 h-full">
           {/* CAJA IZQUIERDA: INPUTS Y CONFIGURACIÓN */}
           <div className="flex flex-col gap-6">
