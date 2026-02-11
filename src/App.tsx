@@ -145,7 +145,7 @@ const App: React.FC = () => {
                       </>
                     ) : (
                       <>
-                        <Sparkles size={20} className="text-accent" />
+                        <Sparkles size={20} className="text-accent hidden sm:block" />
                         Generar descripciones
 
                       </>
